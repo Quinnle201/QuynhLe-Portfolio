@@ -12,5 +12,8 @@
   "dependencies": {
     "express-rate-limit": "^8.2.1"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "serve": "^14.2.5"
+  }
 }
