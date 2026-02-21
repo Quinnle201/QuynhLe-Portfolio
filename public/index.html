@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
     <!-- Header -->
     <header>
       <div class="logo">
-        <img class="avatar" src="photos/avata.png" alt="logo" />
+        <img class="avatar nav-avatar" src="photos/avata.png" alt="logo" />
         <a href="#home"> QuynhLe </a>
       </div>
       <nav>
@@ -41,17 +41,22 @@
           class="resume-btn"
           >View Resume</a
         >
-        <div class="settings">
+        <!-- <div class="settings">
           <button class="settings-btn">
             <i class="fa-solid fa-gear"></i>
           </button>
           <div class="settings-dropdown">
             <a href="#" id="lightMode"> <i class="fa-solid fa-sun"></i></a>
-            <a href="#" id="darkMode"><i class="fa-solid fa-moon"></i></a>
-            <a href="#" id="languages"><i class="fa-solid fa-globe"></i></a>
-          </div>
-        </div>
+            <a href="#" id="darkMode"><i class="fa-solid fa-moon"></i></a> -->
+        <!-- <a href="#" id="languages"><i class="fa-solid fa-globe"></i></a> -->
+        <!-- </div> -->
+        <!-- </div>  -->
 
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="theme-btn">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        
         <button class="hamburger" aria-label="Menu">☰</button>
       </nav>
     </header>
@@ -64,7 +69,7 @@
           <i class="fa-solid fa-star"></i>
         </div>
 
-        <div class="hero-content">
+        <div class="hero-content section">
           <!-- Left block -->
           <div class="hero-left">
             <h1>I am a <span id="typed-text"></span> <br />Developer.</h1>
@@ -94,16 +99,22 @@
           </div>
           <!-- Right block -->
           <div class="hero-right">
-            <img class="avatar" src="photos/avata.png" alt="Hero Image" />
+            <div class="hero-image-container">
+              <img
+                class="avatar hero-img"
+                src="photos/avata.png"
+                alt="Hero Image"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <!-- About Me  -->
-      <section id="about" class="about">
+      <section id="about" class="about section">
         <h2>About Me</h2>
         <div class="about-container">
-          <div class="about-left">
+          <div class="about-left left">
             <div class="career-item">
               <h3>Front-End Development</h3>
               <p>
@@ -126,7 +137,7 @@
               </p>
             </div>
           </div>
-          <div class="about-right">
+          <div class="about-right right">
             <p>
               I’m a passionate software developer with a strong interest in web
               development and AI-driven solutions. I enjoy building responsive,
@@ -148,7 +159,7 @@
         </div>
       </section>
       <!-- Skills  -->
-      <section id="skills" class="skills-section">
+      <section id="skills" class="skills-section section">
         <h2>Skills</h2>
         <div class="skills">
           <div class="skill-item" date-skill="HTML5">
@@ -186,21 +197,37 @@
       </section>
 
       <!-- Projects -->
-      <section id="projects" class="projects-section">
+      <section id="projects" class="projects-section section">
         <h2>Projects</h2>
         <div class="projects">
           <!-- NaviWell Project -->
+          <!-- <div class="projects-wrapper"> -->
           <div class="project-card">
             <img
               src="photos/naviwell3.png"
               alt="NaviWell"
               class="project-image"
             />
-            <div class="project-desc">
+            <div class="project-preview">
               <h3>NaviWell – Healthcare Accessibility Platform</h3>
-              <h4>
-                Technologies: Vue.js, JavaScript, HTML, CSS, GitHub Projects
-              </h4>
+              <p>
+                Developed and maintained responsive Vue.js components for a
+                healthcare management platform, improving usability and
+                accessibility for patients and physicians.
+              </p>
+
+              <div class="project-tech">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">Agile</span>
+              </div>
+            </div>
+            <!-- Hidden full content -->
+            <div class="project-full" style="display: none">
+              <h3>NaviWell – Healthcare Accessibility Platform</h3>
+
               <p>
                 Developed and maintained responsive Vue.js components for a
                 healthcare management platform, improving usability and
@@ -213,15 +240,7 @@
                 teams using GitHub Projects, contributing detailed pull
                 requests, code reviews, and conflict resolution.
               </p>
-              <div class="project-tech">
-                <span class="tech-tag">Vue.js</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">Agile</span>
-              </div>
-            </div>
-            <div class="project-desc-more">
+
               <h5>Gallery</h5>
               <div class="gallery">
                 <img src="photos/naviwell1.png" alt="NaviWell Screenshot 1" />
@@ -242,7 +261,7 @@
                 >GitHub Repository</a
               >
               <a
-                href="/public/files/Naviwell _Demo_QuynhLe.mp4"
+                href="files/Naviwell _Demo_QuynhLe.mp4"
                 target="_blank"
                 class="project-link"
               >
@@ -259,21 +278,17 @@
               class="project-image"
             />
 
-            <div class="project-desc">
+            <!-- Visible Preview -->
+            <div class="project-preview">
               <h3>SnoozyCafe – Full-Stack Coffee Ordering Platform</h3>
-              <h4>
-                Technologies: React.js, Node.js, Express.js, MongoDB, Stripe,
-                Cloudinary
-              </h4>
               <p>
                 Developed a full-stack coffee shop web application with a
-                customer-facing storefront and an admin dashboard. Implemented
-                secure user authentication, cart management, and Stripe payment
-                integration. Built RESTful APIs with Express.js and MongoDB, and
-                deployed the application on Render with Cloudinary for
-                cloud-based image storage.
+                customer-facing storefront and admin dashboard. Implemented
+                secure authentication, shopping cart logic, and Stripe payment
+                processing. Built RESTful APIs with Express.js and MongoDB.
+                Deployed on Render with Cloudinary for cloud-based image
+                storage.
               </p>
-
               <div class="project-tech">
                 <span class="tech-tag">React.js</span>
                 <span class="tech-tag">Node.js</span>
@@ -284,55 +299,65 @@
               </div>
             </div>
 
-            <div class="project-desc-more">
+            <!-- Hidden Full Content -->
+            <div class="project-full" style="display: none">
+              <h3>SnoozyCafe – Full-Stack Coffee Ordering Platform</h3>
+              <p>
+                Developed a full-stack coffee shop web application with a
+                customer-facing storefront and admin dashboard. Implemented
+                secure authentication, shopping cart logic, and Stripe payment
+                processing. Built RESTful APIs with Express.js and MongoDB.
+                Deployed on Render with Cloudinary for cloud-based image
+                storage.
+              </p>
+
               <h5>Gallery</h5>
               <div class="gallery">
-                <img
-                  src="photos/snoozycafe1.png"
-                  alt="SnoozyCafe Screenshot 1"
-                />
-                <img
-                  src="photos/snoozycafe2.png"
-                  alt="SnoozyCafe Screenshot 2"
-                />
-                <img
-                  src="photos/snoozycafe3.png"
-                  alt="SnoozyCafe Screenshot 3"
-                />
-                <img
-                  src="photos/snoozycafe4.png"
-                  alt="SnoozyCafe Screenshot 4"
-                />
+                <img src="photos/snoozycafe1.png" />
+                <img src="photos/snoozycafe2.png" />
+                <img src="photos/snoozycafe3.png" />
+                <img src="photos/snoozycafe4.png" />
               </div>
-
+              <h5>Details</h5>
+              <p>
+                Role: Full-Stack Developer <br />
+                Organization: Personal Project <br />
+                Duration: January 2026 – Present
+              </p>
               <h5>Links</h5>
               <a
                 href="https://github.com/Quinnle201/SnoozyCafe/"
                 target="_blank"
-                rel="noopener noreferrer"
                 class="project-link"
               >
                 GitHub Repository
               </a>
-              <a href="https://snoozycafe.onrender.com/" target="_blank">
+              <a
+                href="https://snoozycafe.onrender.com/"
+                target="_blank"
+                class="project-link"
+              >
                 Live Demo
               </a>
             </div>
           </div>
 
+          <!-- GoalGrid Project -->
           <div class="project-card">
             <img
               src="photos/goalgrid.jpg"
               alt="GoalGrid"
               class="project-image"
             />
-            <div class="project-desc">
+
+            <!-- Visible Preview -->
+            <div class="project-preview">
               <h3>GoalGrid – Personal Goal Tracker</h3>
-              <h4>Technologies: React, Spring Boot, SQL, Figma</h4>
               <p>
-                Full-stack app built with React and Spring Boot. Designed UI in
-                Figma, managed data with SQL, and contributed system models and
-                diagrams for team development at UTD.
+                Built a full-stack goal tracking system using React and Spring
+                Boot. Designed UI prototypes in Figma and implemented relational
+                data storage with SQL. Collaborated on architecture diagrams and
+                backend API integration during team development at UTD.
               </p>
               <div class="project-tech">
                 <span class="tech-tag">React</span>
@@ -341,23 +366,45 @@
                 <span class="tech-tag">Figma</span>
               </div>
             </div>
-            <div class="project-desc-more">
+
+            <!-- Hidden Full Content -->
+            <div class="project-full" style="display: none">
+              <h3>GoalGrid – Personal Goal Tracker</h3>
+
+              <p>
+                Built a full-stack goal tracking system using React and Spring
+                Boot. Designed UI prototypes in Figma and implemented relational
+                data storage with SQL. Collaborated on architecture diagrams and
+                backend API integration during team development at UTD.
+              </p>
               <h5>Gallery</h5>
               <div class="gallery">
-                <!-- <img src="photos/goalgrid1.png" alt="GoalGrid Screenshot 1" />
+                <img src="photos/goalgrid1.png" alt="GoalGrid Screenshot 1" />
                 <img src="photos/goalgrid2.png" alt="GoalGrid Screenshot 2" />
-                <img src="photos/goalgrid3.png" alt="GoalGrid Screenshot 3" /> -->
+                <img src="photos/goalgrid3.png" alt="GoalGrid Screenshot 3" />
               </div>
+              <h5>Details</h5>
+              <p>
+                Role: Full-Stack Developer <br />
+                Organization: The University of Texas at Dallas <br />
+                Duration: September 2024 – December 2024
+              </p>
               <h5>Links</h5>
               <a
-                href="github.com/Quinnle201/GoalGrid"
+                href="https://github.com/UTD-Fall-2024-Sec-6/Group-8"
                 target="_blank"
                 class="project-link"
-                >GitHub Repository</a
               >
-              <a href="https://goalgrid-frontend.onrender.com" target="_blank"
-                >Live Demo</a
+                GitHub Repository
+              </a>
+
+              <a
+                href="https://goalgrid-frontend.onrender.com"
+                target="_blank"
+                class="project-link"
               >
+                Live Demo
+              </a>
             </div>
           </div>
         </div>
@@ -398,7 +445,7 @@
       </section>
 
       <!-- Contact -->
-      <section id="contact" class="contact">
+      <section id="contact" class="contact section">
         <h2>Contact Me</h2>
         <div class="contact-flex">
           <p class="pacifico-regular contact-text">
@@ -459,6 +506,14 @@
     </main>
     <!-- Footer -->
     <footer>&copy; 2024 - Present | Quynh Le. All rights reserved.</footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div id="modal-body"></div>
+      </div>
+    </div>
 
     <script src="js/main.js"></script>
   </body>

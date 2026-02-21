@@ -61,7 +61,7 @@ function type() {
     }
   } else {
     typed.textContent = word.slice(0, j--);
-    typed.style.color = wordColors[word] || "#ffffff"; 
+    typed.style.color = wordColors[word] || "#ffffff";
     if (j < 0) {
       deleting = false;
       j = 0;
@@ -94,51 +94,42 @@ window.addEventListener("scroll", () => {
 });
 
 // theme toggle
-const body = document.body;
+const themeBtn = document.getElementById("theme-toggle");
 
-document.getElementById("lightMode").onclick = () => {
-  body.setAttribute("data-theme", "light");
-};
+themeBtn.addEventListener("click", () => {
+  const body = document.body;
+  const isDark = body.getAttribute("data-theme") === "darkMode";
 
-document.getElementById("darkMode").onclick = () => {
-  body.setAttribute("data-theme", "darkMode");
-};
+  if (isDark) {
+    body.setAttribute("data-theme", ""); // switch to light
+    themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    localStorage.setItem("theme", "light");
+  } else {
+    body.setAttribute("data-theme", "darkMode");
+    themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+// Initialize theme on page load
+if (localStorage.getItem("theme") === "dark") {
+  document.body.setAttribute("data-theme", "darkMode");
+  themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+} else {
+  themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+}
 
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 
-const settingsBtn = document.querySelector(".settings-btn");
-const settingsDropdown = document.querySelector(".settings-dropdown");
 
 //  Toggle Hamburger
 hamburger.addEventListener("click", (e) => {
   e.stopPropagation();
 
   navLinks.classList.toggle("show");
-
-  // Close settings if open
-  settingsDropdown.classList.remove("show");
 });
 
-// Toggle Settings
-settingsBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-
-  settingsDropdown.classList.toggle("show");
-
-  // Close hamburger if open
-  navLinks.classList.remove("show");
-});
-
-// Click outside → close everything
-document.addEventListener("click", (e) => {
-  const isClickInsideNav = e.target.closest("nav");
-
-  if (!isClickInsideNav) {
-    navLinks.classList.remove("show");
-    settingsDropdown.classList.remove("show");
-  }
-});
 
 const canvas = document.getElementById("skills-canvas");
 const ctx = canvas.getContext("2d");
@@ -206,18 +197,18 @@ document.addEventListener("mousemove", (e) => {
   });
 });
 
-const projectCards = document.querySelectorAll(".project-card");
+// const projectCards = document.querySelectorAll(".project-card");
 
-projectCards.forEach((card) => {
-  card.addEventListener("click", (e) => {
-    if (e.target.tagName.toLowerCase() === "a") return;
-    projectCards.forEach((c) => {
-      if (c !== card) c.classList.remove("expanded");
-    });
+// projectCards.forEach((card) => {
+//   card.addEventListener("click", (e) => {
+//     if (e.target.tagName.toLowerCase() === "a") return;
+//     projectCards.forEach((c) => {
+//       if (c !== card) c.classList.remove("expanded");
+//     });
 
-    card.classList.toggle("expanded");
-  });
-});
+//     card.classList.toggle("expanded");
+//   });
+// });
 
 // Avatar images
 const avatarImages = ["photos/avata.png", "photos/avata1.jpg"];
@@ -231,7 +222,58 @@ setInterval(() => {
     currentAvatarIndex = (currentAvatarIndex + 1) % avatarImages.length;
     avatarElements.forEach((img) => {
       img.src = avatarImages[currentAvatarIndex];
-      img.classList.remove("fade-out"); 
+      img.classList.remove("fade-out");
     });
-  }, 500); 
+  }, 500);
 }, 3000);
+
+//Project Modal
+const projectCards = document.querySelectorAll(".project-card");
+const modal = document.getElementById("projectModal");
+const modalBody = document.getElementById("modal-body");
+const closeBtn = document.querySelector(".close-btn");
+
+projectCards.forEach((card) => {
+  card.addEventListener("click", (e) => {
+    // prevent link click from triggering modal
+    if (e.target.tagName === "A") return;
+
+    const fullContent = card.querySelector(".project-full");
+
+    if (fullContent) {
+      modalBody.innerHTML = fullContent.innerHTML;
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+  });
+});
+
+closeBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
+
+function closeModal() {
+  modal.style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+// Scroll animations
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".section, .left, .right , .project-card");
+
+  // Intersection Observer for fade-in + slide-up
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 },
+  );
+  sections.forEach((section) => observer.observe(section));
+});
