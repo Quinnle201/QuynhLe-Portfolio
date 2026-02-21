@@ -2,31 +2,29 @@
 const form = document.getElementById("contactForm");
 const status = document.getElementById("status");
 
-form.addEventListener("submit", async function (e) {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  const data = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
+  const data = new FormData(form);
 
   try {
-    const res = await fetch("/send", {
+    const res = await fetch(form.action, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      body: data,
+      headers: { Accept: "application/json" },
     });
 
     const result = await res.json();
-    status.textContent = result.message;
-    form.reset();
+    if (res.ok) {
+      status.textContent = "Thanks! Your message has been sent ✨";
+      form.reset();
+    } else {
+      status.textContent = result.error || "Error sending message.";
+    }
   } catch (err) {
     status.textContent = "Error sending message.";
   }
 });
+
 form.addEventListener("focusin", () => {
   status.textContent = "";
 });

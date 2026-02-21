@@ -299,7 +299,7 @@
                   src="photos/snoozycafe3.png"
                   alt="SnoozyCafe Screenshot 3"
                 />
-                 <img
+                <img
                   src="photos/snoozycafe4.png"
                   alt="SnoozyCafe Screenshot 4"
                 />
@@ -319,7 +319,6 @@
               </a>
             </div>
           </div>
-
 
           <div class="project-card">
             <img
@@ -405,16 +404,33 @@
           <p class="pacifico-regular contact-text">
             Let's Create Something Amazing Together
           </p>
-          <form id="contactForm">
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/xwvnrklo"
+            method="POST"
+          >
             <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name" required />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+            />
 
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Your email" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email"
+              required
+            />
 
             <label for="message">Message</label>
             <textarea
               id="message"
+              name="message"
               rows="5"
               placeholder="Type your message"
               required
