@@ -1,29 +1,3 @@
-// // public/main.js
-// const sections = document.querySelectorAll("section");
-// const navLinks = document.querySelectorAll(".nav-link");
-
-// window.addEventListener("scroll", () => {
-//   let current = "";
-
-//   sections.forEach((section) => {
-//     const sectionTop = section.offsetTop;
-//     const sectionHeight = section.offsetHeight;
-//     if (
-//       pageYOffset >= sectionTop - 150 &&
-//       pageYOffset < sectionTop + sectionHeight - 150
-//     ) {
-//       current = section.getAttribute("id");
-//     }
-//   });
-
-//   navLinks.forEach((link) => {
-//     link.classList.remove("active");
-//     if (link.getAttribute("href") === "#" + current) {
-//       link.classList.add("active");
-//     }
-//   });
-// });
-
 // FORM SUBMIT
 const form = document.getElementById("contactForm");
 const status = document.getElementById("status");
@@ -57,33 +31,31 @@ form.addEventListener("focusin", () => {
   status.textContent = "";
 });
 
-
-
 // Typing effect
-// Word list (for typing order)
 const wordList = ["Software", "Frontend", "FullStack", "Web", "React"];
 
-// Colors map
 const wordColors = {
-  "Software": "#ffa640",
-  "Frontend": "#645af0",
-  "FullStack": "#3c7723",
-  "Web": "#f86d4a",
-  "React": "#308ea8"
+  Software: "#ffa640",
+  Frontend: "#645af0",
+  FullStack: "#3c7723",
+  Web: "#f86d4a",
+  React: "#308ea8",
 };
 
-let i = 0, j = 0, deleting = false;
+let i = 0,
+  j = 0,
+  deleting = false;
 const typed = document.getElementById("typed-text");
 const typingSpeed = 150;
 const deletingSpeed = 100;
 const pauseTime = 1500;
 
 function type() {
-  const word = wordList[i];             // get word by index
+  const word = wordList[i];
 
   if (!deleting) {
     typed.textContent = word.slice(0, j++);
-    typed.style.color = wordColors[word] || "#ffffff"; // set color
+    typed.style.color = wordColors[word] || "#ffffff";
     if (j > word.length) {
       deleting = true;
       setTimeout(type, pauseTime);
@@ -91,17 +63,15 @@ function type() {
     }
   } else {
     typed.textContent = word.slice(0, j--);
-    typed.style.color = wordColors[word] || "#ffffff"; // maintain color while deleting
+    typed.style.color = wordColors[word] || "#ffffff"; 
     if (j < 0) {
       deleting = false;
       j = 0;
-      i = (i + 1) % wordList.length;   // next word
+      i = (i + 1) % wordList.length;
     }
   }
-
   setTimeout(type, deleting ? deletingSpeed : typingSpeed);
 }
-
 type();
 
 // Active nav on scroll
@@ -133,9 +103,8 @@ document.getElementById("lightMode").onclick = () => {
 };
 
 document.getElementById("darkMode").onclick = () => {
-  body.removeAttribute("data-theme");
+  body.setAttribute("data-theme", "darkMode");
 };
-
 
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
@@ -176,12 +145,14 @@ document.addEventListener("click", (e) => {
 const canvas = document.getElementById("skills-canvas");
 const ctx = canvas.getContext("2d");
 
-let width = canvas.width = window.innerWidth;
-let height = canvas.height = document.querySelector(".skills-section").offsetHeight;
+let width = (canvas.width = window.innerWidth);
+let height = (canvas.height =
+  document.querySelector(".skills-section").offsetHeight);
 
 window.addEventListener("resize", () => {
   width = canvas.width = window.innerWidth;
-  height = canvas.height = document.querySelector(".skills-section").offsetHeight;
+  height = canvas.height =
+    document.querySelector(".skills-section").offsetHeight;
 });
 
 // Generate random particles
@@ -192,7 +163,7 @@ for (let i = 0; i < 50; i++) {
     y: Math.random() * height,
     size: Math.random() * 3 + 1,
     speedX: (Math.random() - 0.5) * 0.5,
-    speedY: (Math.random() - 0.5) * 0.5
+    speedY: (Math.random() - 0.5) * 0.5,
   });
 }
 
@@ -221,7 +192,7 @@ document.addEventListener("mousemove", (e) => {
   const mx = e.clientX;
   const my = e.clientY;
 
-  skillItems.forEach(item => {
+  skillItems.forEach((item) => {
     const rect = item.getBoundingClientRect();
     const dx = mx - (rect.left + rect.width / 2);
     const dy = my - (rect.top + rect.height / 2);
@@ -237,21 +208,32 @@ document.addEventListener("mousemove", (e) => {
   });
 });
 
-
-
 const projectCards = document.querySelectorAll(".project-card");
 
-projectCards.forEach(card => {
+projectCards.forEach((card) => {
   card.addEventListener("click", (e) => {
-    // Avoid triggering when clicking links inside
-    if(e.target.tagName.toLowerCase() === 'a') return;
-
-    // Collapse other cards
-    projectCards.forEach(c => {
+    if (e.target.tagName.toLowerCase() === "a") return;
+    projectCards.forEach((c) => {
       if (c !== card) c.classList.remove("expanded");
     });
 
-    // Toggle this card
     card.classList.toggle("expanded");
   });
 });
+
+// Avatar images
+const avatarImages = ["photos/avata.png", "photos/avata1.jpg"];
+
+let currentAvatarIndex = 0;
+const avatarElements = document.querySelectorAll(".avatar");
+
+setInterval(() => {
+  avatarElements.forEach((img) => img.classList.add("fade-out"));
+  setTimeout(() => {
+    currentAvatarIndex = (currentAvatarIndex + 1) % avatarImages.length;
+    avatarElements.forEach((img) => {
+      img.src = avatarImages[currentAvatarIndex];
+      img.classList.remove("fade-out"); 
+    });
+  }, 500); 
+}, 3000);

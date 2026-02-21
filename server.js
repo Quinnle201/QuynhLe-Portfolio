@@ -1,4 +1,5 @@
 // server.js
+
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
@@ -8,10 +9,10 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/send", async (req, res) => {
   const { name, email, message } = req.body;
@@ -34,9 +35,10 @@ app.post("/send", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res
-      .status(200)
-      .json({ success: true, message: "Thanks! Your message has been sent ✨" });
+    res.status(200).json({
+      success: true,
+      message: "Thanks! Your message has been sent ✨",
+    });
   } catch (error) {
     console.error("Error sending email:", error);
     res.status(500).json({ success: false, message: "Failed to send email." });
