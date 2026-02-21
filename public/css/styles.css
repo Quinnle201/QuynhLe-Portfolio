@@ -117,7 +117,7 @@ nav a.active::after {
 }
 
 .resume-btn:hover {
-  background: var(--button);
+  background: var(--card);
   transform: scale(1.05);
 }
 
@@ -517,19 +517,51 @@ nav a.active::after {
   transition: 0.3s ease;
   cursor: pointer;
 }
+
+
+.gallery-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; 
+  padding-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+
+.gallery-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.gallery-wrapper {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+
 .gallery {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.5rem;
 }
 
+
 .gallery img {
+  flex: 0 0 auto; 
   width: 200px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
+
 .gallery img:hover {
-  transform: scale(1.2) rotate(5deg);
+  transform: scale(1.1) rotate(2deg);
+}
+
+@media (max-width: 768px) {
+  .gallery img {
+    width: 140px;
+    height: 100px;
+  }
 }
 
 .project-link {
@@ -612,8 +644,8 @@ nav a.active::after {
 }
 
 .certificates-image {
-  width: 400px;
-  height: 400px;
+  width: clamp(440px, 45vw, 550px);
+  height: clamp(400px, 50vw, 500px);
   max-width: 90%;
   border-radius: 12px;
   cursor: pointer;
@@ -626,18 +658,6 @@ nav a.active::after {
 .certificates-image:hover {
   transform: scale(1.05) rotate(-1deg);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .certificates-header {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .certificates-image {
-    width: 80%;
-  }
 }
 
 /* CONTACT */
@@ -697,7 +717,7 @@ nav a.active::after {
 .buttons-email {
   padding: 12px 24px;
   background: var(--button);
-  color: var(--text);
+  color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -705,10 +725,13 @@ nav a.active::after {
   transition: background 0.3s ease;
   display: block;
   margin-top: 10px;
+  margin: 0 auto;
+  width: 60%;
 }
 
 .buttons-email:hover {
-  background: #d94de0;
+  background: var(--card);
+  color: var(--text);
 }
 
 .skills a {
