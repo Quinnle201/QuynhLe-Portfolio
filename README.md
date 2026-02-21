@@ -11,7 +11,6 @@
 ## 🔧 Built With
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black)
-![Express](https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white)
 ![JSON](https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat&logo=npm&logoColor=white)
 
@@ -72,10 +71,6 @@ To start the server:
 npm start
 ```
 
-The backend will be served at: `http://localhost:3000`
-
-Make sure your frontend (if separate) uses this endpoint to communicate with the backend.
-
 ---
 
 ### 🧪 Testing
@@ -87,7 +82,7 @@ By default, this repo does not include a test suite. You can write tests using a
 ```bash
 npm test
 ```
-
+PORTFOLIO_URL: https://quynhle-portfolio.onrender.com/
 ---
 
 ## 📬 Contact
