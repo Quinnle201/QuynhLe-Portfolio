@@ -11,7 +11,6 @@
 ## 🔧 Built With
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black)
-![Express](https://img.shields.io/badge/Express-000000.svg?style=flat&logo=Express&logoColor=white)
 ![JSON](https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837.svg?style=flat&logo=npm&logoColor=white)
 
