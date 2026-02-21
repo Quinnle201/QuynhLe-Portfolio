@@ -71,10 +71,6 @@ To start the server:
 npm start
 ```
 
-The backend will be served at: `http://localhost:3000`
-
-Make sure your frontend (if separate) uses this endpoint to communicate with the backend.
-
 ---
 
 ### 🧪 Testing
@@ -86,7 +82,7 @@ By default, this repo does not include a test suite. You can write tests using a
 ```bash
 npm test
 ```
-
+PORTFOLIO_URL: https://quynhle-portfolio.onrender.com/
 ---
 
 ## 📬 Contact
